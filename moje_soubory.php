@@ -13,6 +13,22 @@
 	</head>
 
 	<body>
+	<?php
+	//=================================================================================================
+		//oveří zda je uživatel přihlášen
+		session_start();
+		if (!isset($_SESSION['uzivatel_id']))
+		{
+		header('Location: index.php');
+		exit();
+		}
+		if (isset($_GET['odhlasit']))
+		{
+		session_destroy();
+		header('Location: index.php');
+		exit();
+		}
+		?>
 
 
 <h1>studentske-dokumenty.cekuj.net</h1>
@@ -42,7 +58,6 @@
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Ne</button>
 					</div>
 					
-					
 				</div>
 			</div>
 		</div>
@@ -54,8 +69,6 @@
 <!--Vyhledávání-->	
 <input class="form-control" id="myInput" type="text" placeholder="Hledat..">
  <br>
-
-
 
 <?php
 
@@ -120,47 +133,14 @@ include("sql_info.php");
 					                }
 					                else
 					                        echo("<br><div class='alert alert-success alert-dismissible fade show'><button type='button' class='close' data-dismiss='alert'>&times;</button>".$soubor." nepodařilo se smazat</div>");
- 	
 					        }
 					}
 
-
-
-
 		mysqli_close($con);
-
-
-
-
-
+		//=================================================================================================
 ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
 </body>
 

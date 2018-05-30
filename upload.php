@@ -13,6 +13,23 @@
 	</head>
 
 	<body>
+	<?php
+	//=================================================================================================
+		//oveří zda je uživatel přihlášen
+		session_start();
+		if (!isset($_SESSION['uzivatel_id']))
+		{
+		header('Location: index.php');
+		exit();
+		}
+		if (isset($_GET['odhlasit']))
+		{
+		session_destroy();
+		header('Location: index.php');
+		exit();
+		}
+		//=================================================================================================
+		?>
 
 
 <h1>studentske-dokumenty.cekuj.net</h1>
@@ -50,12 +67,6 @@
 		<!-- THE MODAL KONEC -->
 
 
-
-
-
-
-
-	
 <div class="main">
 
 <div class="alert alert-warning">Před tím než soubor nahrajete, tak ho pojmenujte ve stylu: <strong>téma.přípona</strong><br>Např.: <strong>Balkánský poloostrov.pptx</strong></div>
@@ -100,18 +111,13 @@
 </form>
 
 <?php
+//=================================================================================================
 include("sql_info.php");
 $database = DATABASE;
 $password = PASSWORD;
 $username = USERNAME;
 require('Db.php');
 Db::connect('localhost', $database, $username, $password); //nazev je firstdatbase(je tam preklep)
-
-
-
-
-
-
 
 
 header('Content-type: text/html; charset=utf8');
@@ -133,19 +139,10 @@ if (isset($_FILES['file']))
                         echo('chyba');
         }
 }
-
-
-
-
+//=================================================================================================
 ?>
-
 
 </div>
 
-
-
-
-
 </body>
-
 </html>

@@ -11,6 +11,7 @@
 	</head>
 	<body>
 		<?php
+		//=================================================================================================
 		include("sql_info.php");
 		$database = DATABASE;
 		$password = PASSWORD;
@@ -53,7 +54,7 @@
 				echo('<p>Byl jste úspěšně zaregistrován. <a href="index.php" style="color:white;">Přihlásit</a>');
 			}
 		}
-		
+		//=================================================================================================
 		?>
 		<h1>studentske-dokumenty.cekuj.net</h1>
 		<br>

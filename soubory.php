@@ -12,6 +12,8 @@
 	</head>
 	<body>
 		<?php
+		//=================================================================================================
+		//oveří zda je uživatel přihlášen
 		session_start();
 		if (!isset($_SESSION['uzivatel_id']))
 		{
@@ -24,7 +26,9 @@
 		header('Location: index.php');
 		exit();
 		}
+		//=================================================================================================
 		?>
+
 		<h1>studentske-dokumenty.cekuj.net</h1>
 		<ul class="nav" style="vertical-align: middle;">
 			<li class="nav-item"><a href="soubory.php" class="nav-link active">Všechny soubory</a></li>
@@ -63,6 +67,7 @@
 			<input class="form-control" id="myInput" type="text" placeholder="Hledat..">
 			<br>
 			<?php
+			//=================================================================================================
 			include("sql_info.php");
 			$database = DATABASE;
 			$password = PASSWORD;
@@ -106,6 +111,7 @@
 							}
 			echo "</tbody></table>";
 		mysqli_close($con);
+		//=================================================================================================
 		?>
 	</div>
 </body>

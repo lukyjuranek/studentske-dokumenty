@@ -13,13 +13,16 @@
 
 		
 		<?php
+		//=================================================================================================
+		session_start();
 		require("sql_info.php");
 		$database = DATABASE;
 		$password = PASSWORD;
 		$username = USERNAME;
 		require('Db.php');
-		Db::connect('localhost', $database, $username, $password); //nazev je firstdatbase(je tam preklep)
+		Db::connect('localhost', $database, $username, $password);  //nazev je firstdatbase(je tam překlep)
 		
+		//oveří zda je uživatel přihlášen
 		if (isset($_SESSION['uzivatel_id']))
 		{
 		header('Location: soubory.php');
@@ -44,6 +47,7 @@
 		exit();
 		}
 		}
+		//=================================================================================================
 		?>
 		
 		<h1>studentske-dokumenty.cekuj.net</h1>
