@@ -37,10 +37,7 @@ if (isset($_GET['odhlasit'])) {
         <li class="nav-item"><a href="upload.php" class="nav-link active">Přidat soubor</a></li>
         <li class="nav-item"><a href="moje_soubory.php" class="nav-link">Moje soubory</a></li>
         <li class="nav-item"><a href="" class="nav-link" data-toggle="modal" data-target="#myModal">Odhlásit</a></li><!-- Bez atributu href nefungují bootsrap styly -->
-        <li class="nav-item ml-auto"><a href="moje_soubory.php" class="nav-link"><?php
-session_start();
-echo $_SESSION['prezdivka'];
-?></a></li>
+        <li class="nav-item ml-auto"><a href="moje_soubory.php" class="nav-link"><?php echo $_SESSION['prezdivka']; ?></a></li>
     </ul>
 
 
@@ -121,7 +118,7 @@ require('Db.php');
 Db::connect('localhost', $database, $username, $password); //nazev je firstdatbase(je tam preklep)
 
 
-header('Content-type: text/html; charset=utf8');
+//header('Content-type: text/html; charset=utf8');
 //nahraje soubor
 if (isset($_FILES['file'])) {
     $imagesCount = count($_FILES['file']['name']);

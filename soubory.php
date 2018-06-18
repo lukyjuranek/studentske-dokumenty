@@ -33,9 +33,7 @@ if (isset($_GET['odhlasit'])) {
             <li class="nav-item"><a href="upload.php" class="nav-link">Přidat soubor</a></li>
             <li class="nav-item"><a href="moje_soubory.php" class="nav-link">Moje soubory</a></li>
             <li class="nav-item"><a href="" class="nav-link" data-toggle="modal" data-target="#myModal">Odhlásit</a></li><!-- Bez atributu href nefungují bootsrap styly -->
-            <li class="nav-item ml-auto"><a href="moje_soubory.php" class="nav-link"><?php
-echo $_SESSION['prezdivka'];
-?></a></li>
+            <li class="nav-item ml-auto"><a href="moje_soubory.php" class="nav-link"><?php echo $_SESSION['prezdivka']; ?></a></li>
         </ul>
 
         <!-- THE MODAL ZAČÁTEK -->
@@ -72,7 +70,7 @@ include("sql_info.php");
 $database = DATABASE;
 $password = PASSWORD;
 $username = USERNAME;
-$con      = mysqli_connect("localhost", $username, $password, $database);
+$con = mysqli_connect("localhost", $username, $password, $database);
 // Check connection
 if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
