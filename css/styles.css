@@ -1,0 +1,93 @@
+:root {
+    --nav-color:#294E80;
+    --login-color: #152740;
+    --yellow-btn-color: #FFA700;
+    --yellow-btn-color-hover: #343a40;
+    /*--main-blue:#294E80;*/
+    /* --secondary-blue: #265988; */
+}
+/*Odstraní scrollbar, který tam byl kvůli BOOTSTRAPU*/
+.row {
+    margin-right: 0;
+}
+
+.navbar {
+    background: var(--nav-color);
+}
+.btn-warning {
+    background-color: var(--yellow-btn-color);
+}
+.btn-warning:hover{
+    background-color: var(--yellow-btn-color);
+    color: #525252;
+    border-color: var(--yellow-btn-color);
+}
+
+th.sortable {
+    cursor: pointer;
+    /* Vypne oznčování textu */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+  
+
+
+
+/* ------------------------------------------------------------ */
+#login_body {
+    background: var(--login-color);
+}
+#bottom_form_link {
+    color: #cccccc;
+    transition: all 0.4s;
+}
+#login_form_button {
+    /* background: #111111; */
+    background: var(--yellow-btn-color);
+    color: white;
+    transition: all 0.4s;
+    /* -webkit-transition: all 1s; */
+    overflow: hidden;
+}
+#login_form_button:hover {
+    background-color: var(--yellow-btn-color-hover);
+}
+#bottom_form_link:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#form_col {
+    padding-right: 0;
+}
+#form_col > h1 {
+    color: #fff;
+}
+#nav_link_divider {
+    cursor: default;
+}
+#nav_link_divider:hover {
+    color: rgba(255,255,255,.5);
+}
+
+@media screen and (max-width: 410px) {
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width: 360px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 340px) {
+    .navbar-brand {
+        font-size: 0.9rem;
+    }
+}
+

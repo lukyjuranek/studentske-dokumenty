@@ -1,93 +1,49 @@
 <!DOCTYPE html>
-<html lang="cs-cz">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <title>Registrace uživatele</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<html lang="cz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>studentske-dokumenty.cekuj.net</title>
+    
+    <!-- BOOTSTRAP  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="css/login.css">
-    </head>
-    <body>
-        <?php
-//=================================================================================================
-include("sql_info.php");
-$database = DATABASE;
-$password = PASSWORD;
-$username = USERNAME;
-require('Db.php');
-Db::connect('localhost', $database, $username, $password); //nazev je firstdatbase(je tam preklep)
 
-if ($_POST) {
-    
-    $existuje_prezdivka = Db::querySingle('
-        SELECT COUNT(*)
-        FROM uzivatel
-        WHERE prezdivka=?
-        LIMIT 1
-        ', $_POST['prezdivka']);
-    
-    $existuje_email = Db::querySingle('
-        SELECT COUNT(*)
-        FROM uzivatel
-        WHERE email=?
-        LIMIT 1
-        ', $_POST['email']);
-    
-    
-    
-    
-    if ($existuje_prezdivka)
-        echo "<p>Uživatel s tímto jménem již existuje</p>";
-    elseif ($existuje_email)
-        echo 'Uživatel s tímto emaiilem již existuje.';
-    elseif ($_POST['heslo'] != $_POST['heslo_znovu']) {
-        echo "<p>Hesla se neshodují</p>";
-    } else {
-        $heslo = password_hash($_POST['heslo'], PASSWORD_DEFAULT); //Zahashuje heslo
-        Db::query('
-                    INSERT INTO uzivatel (prezdivka, email, skola, heslo)
-                    VALUES (?, ?, ?, ?)
-                ', $_POST['prezdivka'], $_POST['email'], $_POST['skola'], $heslo);
-        echo ('<p>Byl jste úspěšně zaregistrován. <a href="index.php" style="color:white;">Přihlásit</a>');
-    }
-}
-//=================================================================================================
-?>
-       <h1>studentske-dokumenty.cekuj.net</h1>
-        <br>
+        <script src="js/main.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body id="login_body">
+    <!-- ============================================================================================================================================================ -->
 
-        <div class="container-fluid form">
-            
-            <form method="post">
-                <div class="form-group">
-                    <label>Uživatelské jméno:</label>
-                    <input type="text" class="form-control" name="prezdivka" autofocus>
-                </div>
-                <div class="form-group">
-                    <label>Email:</label>
-                    <input type="email" class="form-control" name="email">
-                </div>
-                <div class="form-group">
-                    <label>Škola:</label>
-                    <input type="text" class="form-control" name="skola">
-                </div>
-                <div class="form-group">
-                    <label>Heslo:</label>
-                    <input type="password" class="form-control" name="heslo">
-                </div>
-                <div class="form-group">
-                    <label>Heslo znovu:</label>
-                    <input type="password" class="form-control" name="heslo_znovu">
-                </div>
-                
-                
-                <button type="submit" class="btn btn-primary">Zaregistrovat</button>
-            </form>
-            <br>
-            <a href="index.php">Přihlásit</a>
-        </div>
-        
-    </body>
+
+<div class="row mt-5 pt-5">
+    <div class="mx-auto col-lg-4 col-md-5 col-sm-6 col-11" id="form_col">
+        <h1 class="text-center mb-3">Registrace</h1> 
+
+
+
+
+        <form action="">
+            <div class="form-group">
+                    <input type="email" class="form-control mb-2" placeholder="Email" name="email">
+                    <input type="text" class="form-control mb-2" placeholder="Přezdívka" name="prezdivka">
+                    <input type="text" class="form-control mb-2" placeholder="Škola" name="skola">
+                    <input type="password" class="form-control mb-2" placeholder="Heslo" name="heslo">
+                    <input type="password" class="form-control mb-2" placeholder="Heslo znovu" name="heslo_znovu">
+                <button type="submit" class="btn bg-black btn-block" id="login_form_button">Zaregistrovat</button>
+            </div>
+        </form>
+        <p class="text-center"><a id="bottom_form_link" href="index.php">Přihlásit</a></p>
+    </div>
+
+</div>
+
+
+
+
+    <!-- ============================================================================================================================================================ -->
+</body>
 </html>
